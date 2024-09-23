@@ -1,0 +1,33 @@
+<!-- Iteración de lista con la informacion de app.component.ts -->
+<button (click)="setVisible()">
+  {{ visible ? "Ocultar" : "Mostra" }}
+</button>
+@if (visible){
+<h2>{{ title }}</h2>
+@if (users != undefined && users.length > 0) {
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track $index) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ user }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {
+<p>No existe registro en el sistema</p>
+} } @else {
+<h3>Lo sentimos no está disponible la página</h3>
+}
+
+<!-- Componente anidado
+ -->
+<app-counter [title]="subTitle" (counterEmit)="setCounter($event)"></app-counter>
+
